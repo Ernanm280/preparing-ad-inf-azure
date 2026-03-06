@@ -104,10 +104,10 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
   * Open PowerShell and run: `ipconfig /all`
 ## Verification Results
 
-✔ Client-1 can reach DC-1
-✔ DNS is correctly pointing to DC-1
-✔ Network configuration is properly set
-✔ The environment is ready for domain join
+1. Client-1 can reach DC-1
+2. DNS is correctly pointing to DC-1
+3. Network configuration is properly set
+4. The environment is ready for domain join
 
 
 <img width="567" height="396" alt="Screenshot 2026-03-02 185645" src="https://github.com/user-attachments/assets/254be868-949c-493b-9a3e-6c74a2e0c960" />
