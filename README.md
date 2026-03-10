@@ -21,7 +21,7 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 <h2>Steps in Creating Resource Group, Virtual Network, and Virtual Machines</h2>
 
 **1. Setup Domain Controller in Azure**
-
+---
 * Sign in to the **Azure Portal**.
 * Create a new **Resource Group**.
 * Create a **Virtual Network (VNet)** and add a subnet.
@@ -39,7 +39,7 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 
 **2. Domain Controller VM configuration**
-
+---
 * Navigate to `DC-1` in the Azure Portal.
 
 * Open the `Network Interface Card` `(NIC)` settings.
@@ -59,8 +59,8 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 <img width="762" height="669" alt="Screenshot 2026-03-02 183943" src="https://github.com/user-attachments/assets/e7a15d53-6d87-4875-8fcc-96ad3d78415c" />
 
 
-**3. Setup `Client-1` in Azure**
-
+**3. Setup Client-1 in Azure**
+---
 * Deploy a **Windows 10** Virtual Machine named `Client-1`
 
 * Configure the local administrator credentials:
@@ -85,7 +85,8 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 <img width="1224" height="288" alt="Screenshot 2026-03-02 185024" src="https://github.com/user-attachments/assets/840890bd-ab1b-416b-8cbd-f4d38021a024" />
 
  
-**4. Log in to `Client-1`**
+**4. Log in to Client-1**
+---
   * Use the configured administrator credentials to sign in via Remote Desktop.
 * **Test connectivity to DC-1**
   
@@ -117,6 +118,8 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 <h2>Purpose</h2>
 
-The purpose of this repository is to document and demonstrate the process of preparing an Active Directory infrastructure in Azure. It serves as a structured reference for building a similar environment for learning, testing, or real-world deployment scenarios.
+The purpose of this repository is to document and demonstrate the process of preparing an Active Directory infrastructure within Microsoft Azure. It provides a structured reference for building a cloud-based environment that simulates a traditional on-premises Active Directory setup.
+This project outlines the key steps for configuring virtual machines, networking, DNS settings, and domain services to establish a functional Active Directory environment. It is intended to support learning, testing, and experimentation with identity and infrastructure management in a cloud environment.
+
 
 
