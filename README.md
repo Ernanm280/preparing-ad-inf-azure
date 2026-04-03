@@ -90,9 +90,11 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
   * Use the configured administrator credentials to sign in via Remote Desktop
 * **Test connectivity to DC-1**
   
-  * Open Command Prompt.
-  * Ping `DC-1` Private IP address.
+  * Open Command Prompt
+  * Ping `DC-1` Private IP address
   * Confirm that the ping replies are successful
+ 
+  <img width="567" height="396" alt="Screenshot 2026-03-02 185645" src="https://github.com/user-attachments/assets/254be868-949c-493b-9a3e-6c74a2e0c960" />
 
   Successful replies confirm:
 
@@ -103,18 +105,15 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 * **Verify DNS settings on `Client-1`**
 
   * Open PowerShell and run: `ipconfig /all`
+ 
+<img width="614" height="439" alt="Screenshot 2026-03-02 185813" src="https://github.com/user-attachments/assets/65b8ca9c-40c9-4e07-9678-76fbdaa204af" />
+
 ## Verification Results
 
 - `Client-1` can reach `DC-1`
 - DNS is correctly pointing to `DC-1`
 - Network configuration is properly set
 - The environment is ready for domain join
-
-
-<img width="567" height="396" alt="Screenshot 2026-03-02 185645" src="https://github.com/user-attachments/assets/254be868-949c-493b-9a3e-6c74a2e0c960" />
-<img width="614" height="439" alt="Screenshot 2026-03-02 185813" src="https://github.com/user-attachments/assets/65b8ca9c-40c9-4e07-9678-76fbdaa204af" />
-
-
 
 <h2>Purpose</h2>
 
