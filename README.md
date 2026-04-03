@@ -22,15 +22,15 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 **1. Setup Domain Controller in Azure**
 ---
-* Sign in to the **Azure Portal**.
-* Create a new **Resource Group**.
-* Create a **Virtual Network (VNet)** and add a subnet.
-* Deploy a **Windows Server 2022** Virtual Machine named **DC-1**.
+* Sign in to the **Azure Portal**
+* Create a new **Resource Group**
+* Create a **Virtual Network (VNet)** and add a subnet
+* Deploy a **Windows Server 2022** Virtual Machine named `DC-1`
 * Configure the administrator credentials:
 
   * **Username:**
   * **Password:**
-* Ensure the VM is deployed in the selected region and connected to the created Virtual Network.
+* Ensure the VM is deployed in the selected region and connected to the created Virtual Network
 
 `DC-1` has been successfully deployed in Azure within the configured Resource Group and Virtual Network. It is now running and properly connected to the designated subnet, making it ready for network configuration and further Active Directory setup.
 
@@ -40,23 +40,23 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 **2. Domain Controller VM configuration**
 ---
-* Navigate to `DC-1` in the Azure Portal.
+* Navigate to `DC-1` in the Azure Portal
 
-* Open the `Network Interface Card` `(NIC)` settings.
+* Open the `Network Interface Card` `(NIC)` settings
 
-* `Under IP configurations`, change the Private IP from **Dynamic** to **Static** and save.
+* Under `IP configurations`, change the Private IP from **Dynamic** to **Static** and save
 
-* Connect to `DC-1` using Remote Desktop.
+ <img width="572" height="621" alt="Screenshot 2026-03-02 183115" src="https://github.com/user-attachments/assets/2344b303-daae-423e-b7be-3ea99c58717b" />
 
-* Open Windows Firewall settings.
+* Connect to `DC-1` using Remote Desktop
 
-* Temporarily disable the **Windows Firewall** for testing connectivity.
+* Open Windows Firewall settings
+
+* Temporarily disable the **Windows Firewall** for testing connectivity
+
+<img width="762" height="669" alt="Screenshot 2026-03-02 183943" src="https://github.com/user-attachments/assets/e7a15d53-6d87-4875-8fcc-96ad3d78415c" />
 
  `DC-1`has been successfully deployed, connected to the correct Virtual Network and subnet, and is now ready for further Active Directory configuration and role installation.
-
-
-<img width="572" height="621" alt="Screenshot 2026-03-02 183115" src="https://github.com/user-attachments/assets/2344b303-daae-423e-b7be-3ea99c58717b" />
-<img width="762" height="669" alt="Screenshot 2026-03-02 183943" src="https://github.com/user-attachments/assets/e7a15d53-6d87-4875-8fcc-96ad3d78415c" />
 
 
 **3. Setup Client-1 in Azure**
@@ -68,17 +68,17 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
   * **Username:**
   * **Password:**
 
-* Ensure `Client-1` is deployed in the **same region** and connected to the **same Virtual Network and subnet** as `DC-1`.
+* Ensure `Client-1` is deployed in the **same region** and connected to the **same Virtual Network and subnet** as `DC-1`
 
-* After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure.
+* After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure
 
-* Under **DNS settings**, change from default to **Custom** and enter `DC-1` Private IP address.
+* Under **DNS settings**, change from default to **Custom** and enter `DC-1` Private IP address
 
-* Save the configuration changes.
+* Save the configuration changes
 
-* Restart `Client-1` from the Azure Portal to apply the updated DNS settings.
+* Restart `Client-1` from the Azure Portal to apply the updated DNS settings
 
-`Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity.
+`Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity
 
 
 <img width="757" height="160" alt="Screenshot 2026-03-02 185145" src="https://github.com/user-attachments/assets/d211fd43-480d-4e70-8488-c1edfb500633" />
@@ -87,18 +87,18 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
  
 **4. Log in to Client-1**
 ---
-  * Use the configured administrator credentials to sign in via Remote Desktop.
+  * Use the configured administrator credentials to sign in via Remote Desktop
 * **Test connectivity to DC-1**
   
   * Open Command Prompt.
   * Ping `DC-1` Private IP address.
-  * Confirm that the ping replies are successful.
+  * Confirm that the ping replies are successful
 
   Successful replies confirm:
 
-  * Network connectivity is functioning properly.
-  * The firewall is not blocking ICMP traffic.
-  * Both VMs are on the same Virtual Network and subnet.
+  * Network connectivity is functioning properly
+  * The firewall is not blocking ICMP traffic
+  * Both VMs are on the same Virtual Network and subnet
 
 * **Verify DNS settings on `Client-1`**
 
