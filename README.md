@@ -83,7 +83,10 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 
 * Restart `Client-1` from the Azure Portal to apply the updated DNS settings
 
-`Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. Active Directory relies on DNS to locate domain services, making this step essential for domain communications.
+`Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. 
+
+> [!NOTE]
+> Active Directory relies on DNS to locate domain services, making this step essential for domain communications.
 
 
 <img width="757" height="160" alt="Screenshot 2026-03-02 185145" src="https://github.com/user-attachments/assets/d211fd43-480d-4e70-8488-c1edfb500633" />
