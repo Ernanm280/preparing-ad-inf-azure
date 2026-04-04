@@ -22,15 +22,14 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 **1. Setup Domain Controller in Azure**
 ---
-* Open the [Azure](https://portal.azure.com/) Portal
-* Create a new **Resource Group**
-* Create a **Virtual Network (VNet)** and add a subnet
-* Deploy a **Windows Server 2022** Virtual Machine named `DC-1`
-* Configure the administrator credentials:
+1. Open the [Azure](https://portal.azure.com/) Portal
+2. Create a new **Resource Group**
+3. Create a **Virtual Network (VNet)** and add a subnet
+4. Deploy a **Windows Server 2022** Virtual Machine named `DC-1`
+5. Configure the administrator credentials: **Username/Password**
 
-  * **Username:**
-  * **Password:**
-* Ensure the VM is deployed in the selected region and connected to the created Virtual Network
+> [!NOTE]
+> Ensure the VM is deployed in the selected region and connected to the created Virtual Network
 
 `DC-1` has been successfully deployed in Azure within the configured Resource Group and Virtual Network. It is now running and properly connected to the designated subnet, making it ready for network configuration and further Active Directory setup.
 
@@ -40,11 +39,9 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 **2. Domain Controller VM configuration**
 ---
-* Navigate to `DC-1` in the Azure Portal
-
-* Open the `Network Interface Card` `(NIC)` settings
-
-* Under `IP configurations`, change the Private IP from **Dynamic** to **Static** and save
+1. Navigate to `DC-1` in the Azure Portal
+2. Open the `Network Interface Card` `(NIC)` settings
+3. Under `IP configurations`, change the Private IP from **Dynamic** to **Static** and save
 
 The Domain Controllers' IP is configured as static to ensure consistent network communication. It must have a static IP so clients can reliably locate it for DNS and authentication services.
 
@@ -53,9 +50,9 @@ The Domain Controllers' IP is configured as static to ensure consistent network 
 **Disable Firewall (Temporary for Testing)**
 
 **Steps**:
-* Connect to `DC-1` using Remote Desktop
-* Open Windows Firewall settings
-* Temporarily disable the **Windows Firewall** for testing connectivity
+1. Connect to `DC-1` using Remote Desktop
+2. Open Windows Firewall settings
+3. Temporarily disable the **Windows Firewall** for testing connectivity
 
 Firewall is temporarily disabled to allow connectivity testing between virtual machines. This allows `ICMP` (ping) traffic for testing. In production, firewall rules would be configured instead of disabling it.
 
@@ -66,22 +63,17 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 
 **3. Setup Client-1 in Azure**
 ---
-* Deploy a **Windows 10** Virtual Machine named `Client-1`
+1. Deploy a **Windows 10** Virtual Machine named `Client-1`
+2. Configure the local administrator credentials: **Username/Password**
 
-* Configure the local administrator credentials:
 
-  * **Username:**
-  * **Password:**
+> [!NOTE]
+> Ensure `Client-1` is deployed in the **same region** and connected to the **same Virtual Network and subnet** as `DC-1`
 
-* Ensure `Client-1` is deployed in the **same region** and connected to the **same Virtual Network and subnet** as `DC-1`
-
-* After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure
-
-* Under **DNS settings**, change from default to **Custom** and enter `DC-1` Private IP address
-
-* Save the configuration changes
-
-* Restart `Client-1` from the Azure Portal to apply the updated DNS settings
+3. After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure
+4. Under **DNS settings**, change from default to **Custom** and enter `DC-1` Private IP address (`10.0.0.4`)
+5. Save the configuration changes
+6. Restart `Client-1` from the Azure Portal to apply the updated DNS settings
 
 `Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. 
 
@@ -100,9 +92,9 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 
 **Steps**:
 
-- Log into `Client-1`
-- Open Command Prompt
-- Ping DC-1 private IP
+1. Log into `Client-1`
+2. Open Command Prompt
+3. Ping DC-1 private IP
 
 <img width="567" height="396" alt="Screenshot 2026-03-02 185645" src="https://github.com/user-attachments/assets/254be868-949c-493b-9a3e-6c74a2e0c960" />
 
