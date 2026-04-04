@@ -103,6 +103,9 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 
 <img width="567" height="396" alt="Screenshot 2026-03-02 185645" src="https://github.com/user-attachments/assets/254be868-949c-493b-9a3e-6c74a2e0c960" />
 
+> [!NOTE]
+>  If ping fails, verify that both VMs are in the same VNet and that firewall or NSG rules are not blocking ICMP traffic.
+
   Successful replies confirm:
 
   * Network connectivity is functioning properly
