@@ -22,7 +22,7 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 **1. Setup Domain Controller in Azure**
 ---
-* Sign in to the **Azure Portal**
+* Open the [Azure](https://portal.azure.com/) Portal
 * Create a new **Resource Group**
 * Create a **Virtual Network (VNet)** and add a subnet
 * Deploy a **Windows Server 2022** Virtual Machine named `DC-1`
@@ -46,13 +46,18 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 * Under `IP configurations`, change the Private IP from **Dynamic** to **Static** and save
 
+The Domain Controllers' IP is configured as static to ensure consistent network communication. It must have a static IP so clients can reliably locate it for DNS and authentication services.
+
  <img width="572" height="621" alt="Screenshot 2026-03-02 183115" src="https://github.com/user-attachments/assets/2344b303-daae-423e-b7be-3ea99c58717b" />
 
+**Disable Firewall (Temporary for Testing)**
+
+**Steps**:
 * Connect to `DC-1` using Remote Desktop
-
 * Open Windows Firewall settings
-
 * Temporarily disable the **Windows Firewall** for testing connectivity
+
+Firewall is temporarily disabled to allow connectivity testing between virtual machines. This allows `ICMP` (ping) traffic for testing. In production, firewall rules would be configured instead of disabling it.
 
 <img width="762" height="669" alt="Screenshot 2026-03-02 183943" src="https://github.com/user-attachments/assets/e7a15d53-6d87-4875-8fcc-96ad3d78415c" />
 
@@ -78,23 +83,25 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 * Restart `Client-1` from the Azure Portal to apply the updated DNS settings
 
-`Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity
+`Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. Active Directory relies on DNS to locate domain services, making this step essential for domain communications.
 
 
 <img width="757" height="160" alt="Screenshot 2026-03-02 185145" src="https://github.com/user-attachments/assets/d211fd43-480d-4e70-8488-c1edfb500633" />
 <img width="1224" height="288" alt="Screenshot 2026-03-02 185024" src="https://github.com/user-attachments/assets/840890bd-ab1b-416b-8cbd-f4d38021a024" />
 
  
-**4. Log in to Client-1**
+**4. Validate Connectivity and Configuration**
 ---
-  * Use the configured administrator credentials to sign in via Remote Desktop
-* **Test connectivity to DC-1**
-  
-  * Open Command Prompt
-  * Ping `DC-1` Private IP address
-  * Confirm that the ping replies are successful
- 
-  <img width="567" height="396" alt="Screenshot 2026-03-02 185645" src="https://github.com/user-attachments/assets/254be868-949c-493b-9a3e-6c74a2e0c960" />
+
+**Test connectivity to DC-1**
+
+**Steps**:
+
+- Log into `Client-1`
+- Open Command Prompt
+- Ping DC-1 private IP
+
+<img width="567" height="396" alt="Screenshot 2026-03-02 185645" src="https://github.com/user-attachments/assets/254be868-949c-493b-9a3e-6c74a2e0c960" />
 
   Successful replies confirm:
 
@@ -102,11 +109,11 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
   * The firewall is not blocking ICMP traffic
   * Both VMs are on the same Virtual Network and subnet
 
-* **Verify DNS settings on `Client-1`**
-
-  * Open PowerShell and run: `ipconfig /all`
+**Verify DNS settings on `Client-1`**
+- Open PowerShell and run: `ipconfig /all`
  
 <img width="614" height="439" alt="Screenshot 2026-03-02 185813" src="https://github.com/user-attachments/assets/65b8ca9c-40c9-4e07-9678-76fbdaa204af" />
+
 
 ## Verification Results
 
