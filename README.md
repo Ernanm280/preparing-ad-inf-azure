@@ -40,7 +40,7 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 **2. Domain Controller VM configuration**
 ---
 1. Navigate to `DC-1` in the Azure Portal
-2. Open the `Network Interface Card` `(NIC)` settings
+2. Open the `Network Interface Card` (NIC) settings
 3. Under `IP configurations`, change the Private IP from **Dynamic** to **Static** and save
 
 The Domain Controllers' IP is configured as static to ensure consistent network communication. It must have a static IP so clients can reliably locate it for DNS and authentication services.
@@ -54,11 +54,11 @@ The Domain Controllers' IP is configured as static to ensure consistent network 
 2. Open Windows Firewall settings
 3. Temporarily disable the **Windows Firewall** for testing connectivity
 
-Firewall is temporarily disabled to allow connectivity testing between virtual machines. This allows `ICMP` (ping) traffic for testing. In production, firewall rules would be configured instead of disabling it.
+Firewall is temporarily disabled to allow connectivity testing between virtual machines. This allows `ICMP` (ping) traffic for testing. In production, firewall rules would be configured instead of being disabled.
 
 <img width="762" height="669" alt="Screenshot 2026-03-02 183943" src="https://github.com/user-attachments/assets/e7a15d53-6d87-4875-8fcc-96ad3d78415c" />
 
- `DC-1`has been successfully deployed, connected to the correct Virtual Network and subnet, and is now ready for further Active Directory configuration and role installation.
+`DC-1` has been successfully deployed, connected to the correct Virtual Network and subnet, and is now ready for further Active Directory configuration and role installation.
 
 
 **3. Setup Client-1 in Azure**
