@@ -20,7 +20,7 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 <h2>Steps in Creating Resource Group, Virtual Network, and Virtual Machines</h2>
 
-**1. Setup Domain Controller in Azure**
+**1. Setup Domain Controller VM in Azure**
 ---
 1. Open the [Azure](https://portal.azure.com/) Portal
 2. Create a new **Resource Group**
@@ -60,15 +60,18 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 <img width="762" height="669" alt="Screenshot 2026-03-02 183943" src="https://github.com/user-attachments/assets/e7a15d53-6d87-4875-8fcc-96ad3d78415c" />
 
 
-**3. Setup Client-1 in Azure**
+**3. Setup Client-1 VM in Azure**
 ---
 1. Deploy a **Windows 10** Virtual Machine named `Client-1`
 2. Configure the local administrator credentials: **Username/Password**
 3. Ensure `Client-1` is deployed in the **same region** and connected to the **same Virtual Network and subnet** as `DC-1`
-4. After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure
-5. Under **DNS settings**, change from default to **Custom** and enter `DC-1` Private IP address (`10.0.0.4`)
-6. Save the configuration changes
-7. Restart `Client-1` from the Azure Portal to apply the updated DNS settings
+
+**`Client-1` VM Configurations:**
+
+1. After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure
+2. Under **DNS settings**, change from default to **Custom** and enter `DC-1` Private IP address (`10.0.0.4`)
+3. Save the configuration changes
+4. Restart `Client-1` from the Azure Portal to apply the updated DNS settings
 
 `Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. 
 
@@ -79,13 +82,13 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 **4. Validate Connectivity and Configuration**
 ---
 
-**Test connectivity to DC-1**
+**Test connectivity to `DC-1`**
 
 **Steps**:
 
 1. Log into `Client-1`
 2. Open Command Prompt
-3. Ping DC-1 private IP (10.0.0.4)
+3. Ping `DC-1` private IP `(10.0.0.4)`
 
 **Successful replies confirm:**
   * Network connectivity is functioning properly
