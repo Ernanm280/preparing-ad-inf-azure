@@ -54,11 +54,10 @@ The Domain Controllers' IP is configured as static to ensure consistent network 
 2. Open Windows Firewall settings
 3. Temporarily disable the **Windows Firewall** for testing connectivity
 
-Firewall is temporarily disabled to allow connectivity testing between virtual machines. This allows `ICMP` ping traffic for testing. In production, firewall rules would be configured instead of being disabled.
+Firewall is temporarily disabled to allow connectivity testing between virtual machines. This allows `ICMP` ping traffic for testing. In production, firewall rules would be configured instead of being disabled. `DC-1` has been successfully deployed, connected to the correct Virtual Network and subnet, and is now ready for further Active Directory configuration and role installation.
+
 
 <img width="762" height="669" alt="Screenshot 2026-03-02 183943" src="https://github.com/user-attachments/assets/e7a15d53-6d87-4875-8fcc-96ad3d78415c" />
-
-`DC-1` has been successfully deployed, connected to the correct Virtual Network and subnet, and is now ready for further Active Directory configuration and role installation.
 
 
 **3. Setup Client-1 in Azure**
@@ -92,12 +91,15 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 2. Open Command Prompt
 3. Ping DC-1 private IP
 
-<img width="567" height="396" alt="Screenshot 2026-03-02 185645" src="https://github.com/user-attachments/assets/254be868-949c-493b-9a3e-6c74a2e0c960" />
-
 > [!NOTE]
 >  If ping fails, verify that both VMs are in the same VNet and that firewall or NSG rules are not blocking ICMP traffic.
 
-  Successful replies confirm:
+<img width="567" height="396" alt="Screenshot 2026-03-02 185645" src="https://github.com/user-attachments/assets/254be868-949c-493b-9a3e-6c74a2e0c960" />
+
+<br>
+<br>
+
+Successful replies confirm:
 
   * Network connectivity is functioning properly
   * The firewall is not blocking ICMP traffic
