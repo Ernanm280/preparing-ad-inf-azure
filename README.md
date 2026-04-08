@@ -28,12 +28,10 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 4. Deploy a **Windows Server 2022** Virtual Machine named `DC-1`
 5. Configure the administrator credentials: **Username/Password**
 
-> [!NOTE]
-> Ensure the VM is deployed in the selected region and connected to the created Virtual Network
-
 `DC-1` has been successfully deployed in Azure within the configured Resource Group and Virtual Network. It is now running and properly connected to the designated subnet, making it ready for network configuration and further Active Directory setup.
 
-
+> [!NOTE]
+> Ensure the VM is deployed in the selected region and connected to the created Virtual Network
 <img width="1174" height="226" alt="image" src="https://github.com/user-attachments/assets/4cd40abd-9120-443e-b930-57e18826b1e6" />
 
 
@@ -47,14 +45,16 @@ The Domain Controllers' IP is configured as static to ensure consistent network 
 
  <img width="572" height="621" alt="Screenshot 2026-03-02 183115" src="https://github.com/user-attachments/assets/2344b303-daae-423e-b7be-3ea99c58717b" />
 
-**Disable Firewall (Temporary for Testing)**
+<br>
+<br>
 
+**Disable Firewall (Temporary for Testing)**
 **Steps**:
 1. Connect to `DC-1` using Remote Desktop
 2. Open Windows Firewall settings
 3. Temporarily disable the **Windows Firewall** for testing connectivity
 
-Firewall is temporarily disabled to allow connectivity testing between virtual machines. This allows `ICMP` (ping) traffic for testing. In production, firewall rules would be configured instead of being disabled.
+Firewall is temporarily disabled to allow connectivity testing between virtual machines. This allows `ICMP` ping traffic for testing. In production, firewall rules would be configured instead of being disabled.
 
 <img width="762" height="669" alt="Screenshot 2026-03-02 183943" src="https://github.com/user-attachments/assets/e7a15d53-6d87-4875-8fcc-96ad3d78415c" />
 
@@ -65,15 +65,11 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 ---
 1. Deploy a **Windows 10** Virtual Machine named `Client-1`
 2. Configure the local administrator credentials: **Username/Password**
-
-
-> [!NOTE]
-> Ensure `Client-1` is deployed in the **same region** and connected to the **same Virtual Network and subnet** as `DC-1`
-
-3. After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure
-4. Under **DNS settings**, change from default to **Custom** and enter `DC-1` Private IP address (`10.0.0.4`)
-5. Save the configuration changes
-6. Restart `Client-1` from the Azure Portal to apply the updated DNS settings
+3. Ensure `Client-1` is deployed in the **same region** and connected to the **same Virtual Network and subnet** as `DC-1`
+4. After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure
+5. Under **DNS settings**, change from default to **Custom** and enter `DC-1` Private IP address (`10.0.0.4`)
+6. Save the configuration changes
+7. Restart `Client-1` from the Azure Portal to apply the updated DNS settings
 
 `Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. 
 
