@@ -72,10 +72,6 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 
 `Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. 
 
-> [!NOTE]
-> Active Directory relies on DNS to locate domain services, making this step essential for domain communications.
-
-
 <img width="757" height="160" alt="Screenshot 2026-03-02 185145" src="https://github.com/user-attachments/assets/d211fd43-480d-4e70-8488-c1edfb500633" />
 <img width="1224" height="288" alt="Screenshot 2026-03-02 185024" src="https://github.com/user-attachments/assets/840890bd-ab1b-416b-8cbd-f4d38021a024" />
 
@@ -89,7 +85,12 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 
 1. Log into `Client-1`
 2. Open Command Prompt
-3. Ping DC-1 private IP
+3. Ping DC-1 private IP (10.0.0.4)
+
+**Successful replies confirm:**
+  * Network connectivity is functioning properly
+  * The firewall is not blocking ICMP traffic
+  * Both VMs are on the same Virtual Network and subnet
 
 > [!NOTE]
 >  If ping fails, verify that both VMs are in the same VNet and that firewall or NSG rules are not blocking ICMP traffic.
@@ -99,15 +100,12 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 <br>
 <br>
 
-Successful replies confirm:
-
-  * Network connectivity is functioning properly
-  * The firewall is not blocking ICMP traffic
-  * Both VMs are on the same Virtual Network and subnet
-
 **Verify DNS settings on `Client-1`**
 - Open PowerShell and run: `ipconfig /all`
- 
+
+> [!NOTE]
+> Active Directory relies on DNS to locate domain services, making this step essential for domain communications.
+
 <img width="614" height="439" alt="Screenshot 2026-03-02 185813" src="https://github.com/user-attachments/assets/65b8ca9c-40c9-4e07-9678-76fbdaa204af" />
 
 
