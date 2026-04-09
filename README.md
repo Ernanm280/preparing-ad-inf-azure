@@ -57,7 +57,7 @@ The Domain Controllers' IP is configured as static to ensure consistent network 
 Firewall is temporarily disabled to allow connectivity testing between virtual machines, allowing `ICMP` ping traffic for testing. `DC-1` has been successfully deployed, connected to the correct Virtual Network and subnet, and is now ready for further Active Directory configuration and role installation.
 
 > [!NOTE]
-> In production, firewall rules would be configured instead of being disabled.
+> In a production environment, firewall rules would be properly configured rather than disabled.
 
 
 <img width="762" height="669" alt="Screenshot 2026-03-02 183943" src="https://github.com/user-attachments/assets/e7a15d53-6d87-4875-8fcc-96ad3d78415c" />
