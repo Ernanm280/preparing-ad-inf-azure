@@ -18,7 +18,7 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 - Windows Server 2022
 - Windows 10 (21H2)
 
-<h2>Deployment and Configuration steps</h2>
+<h2>Deployment and Configuration Steps</h2>
 
 **1. Setup Domain Controller VM in Azure**
 ---
