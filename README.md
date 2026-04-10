@@ -74,7 +74,8 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 
 1. After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure
 2. Under **DNS settings**, change from **default** to **Custom** and enter `DC-1` Private IP address (`10.0.0.4`)
-To locate DC-1 Private IP address:
+
+To locate `DC-1` Private IP address:
 
 - Navigate to Virtual Machines in the Azure Portal
 - Select the DC-1 virtual machine
