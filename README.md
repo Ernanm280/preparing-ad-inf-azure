@@ -23,7 +23,7 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 **1. Setup Domain Controller VM in Azure**
 ---
 1. Open the [Azure](https://portal.azure.com/) Portal
-2. Create a new **Resource Group**
+2. Create a new **Resource Group** named `RG-Active_Directory`
 3. Create a **Virtual Network (VNet)** and add a subnet
 4. Deploy a **Windows Server 2022** Virtual Machine named `DC-1`
 5. Configure the administrator credentials: **Username/Password**
@@ -66,19 +66,31 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 **3. Setup Client-1 VM in Azure**
 ---
 1. Deploy a **Windows 10** Virtual Machine named `Client-1`
+2. Ensure`Client 1` is in the same resource group as `DC-1`
 2. Configure the local administrator credentials: **Username/Password**
-3. Ensure `Client-1` is deployed in the **same region** and connected to the **same Virtual Network and subnet** as `DC-1`
+3. Ensure `Client-1` is deployed in the same **region** and connected to the same **Virtual Network and subnet** as `DC-1`
 
 **`Client-1` VM Configurations:**
 
 1. After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure
-2. Under **DNS settings**, change from default to **Custom** and enter `DC-1` Private IP address (`10.0.0.4`)
-3. Save the configuration changes
-4. Restart `Client-1` from the Azure Portal to apply the updated DNS settings
+2. Under **DNS settings**, change from **default** to **Custom** and enter `DC-1` Private IP address (`10.0.0.4`)
+To locate DC-1 Private IP address:
+
+- Navigate to Virtual Machines in the Azure Portal
+- Select the DC-1 virtual machine
+- View the Overview page to identify networking details
+- Locate the assigned Private IP Address (10.0.0.4)
+
+<img width="757" height="160" alt="Screenshot 2026-03-02 185145" src="https://github.com/user-attachments/assets/d211fd43-480d-4e70-8488-c1edfb500633" />
+
+<br>
+<br>
+
+4. Save the configuration changes
+5. Restart `Client-1` from the Azure Portal to apply the updated DNS settings
 
 `Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. 
 
-<img width="757" height="160" alt="Screenshot 2026-03-02 185145" src="https://github.com/user-attachments/assets/d211fd43-480d-4e70-8488-c1edfb500633" />
 <img width="1224" height="288" alt="Screenshot 2026-03-02 185024" src="https://github.com/user-attachments/assets/840890bd-ab1b-416b-8cbd-f4d38021a024" />
 
  
