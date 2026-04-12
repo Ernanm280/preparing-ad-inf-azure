@@ -69,32 +69,42 @@ Once the DC-1 VM is created, view the VM by typing "virtual Machine" in the sear
 Allocation settings to **Static**. Once I selected **Save**, I went back to the listed DC-1 VM and noted and copied the Domain Controller's Public IP. 
 The Domain Controllers' IP is configured as static to ensure consistent network communication. It must have a static IP so clients can reliably locate it for DNS and authentication services.
 
-<img width="1315" height="518" alt="Screenshot 2026-04-10 212317" src="https://github.com/user-attachments/assets/6b0e4c3a-204c-4e84-a3b6-e908058f7d74" />
 <img width="1048" height="819" alt="Screenshot 2026-04-10 212605" src="https://github.com/user-attachments/assets/2c2f1736-b96e-4c63-9e35-58c914329ab5" />
 
+<br>
+<br>
+<br>
 
-**Disable Firewall (Temporary for Testing)**
-**Steps**:
-1. Connect to `DC-1` using Remote Desktop
-2. Open Windows Firewall settings
-3. Temporarily disable the **Windows Firewall** for testing connectivity
+****Disable Firewall on DC-1 VM (Temporary for Testing)****
 
-Firewall is temporarily disabled to allow connectivity testing between virtual machines, allowing `ICMP` ping traffic for testing. `DC-1` has been successfully deployed, connected to the correct Virtual Network and subnet, and is now ready for further Active Directory configuration and role installation.
+On my local computer, I used Remote Desktop Client to connect to DC-1 VM using its public IP address (20.83.153.138). To connect, I enetred the correct credentials created when the VM was created.   
+
+<img width="1381" height="613" alt="Screenshot 2026-04-10 213001" src="https://github.com/user-attachments/assets/25ad1938-1ef6-4450-ab8c-85e5e596b9bc" />
+
+<br>
+<br>
+<br>
+
+Next, select **Yes** to proceed—your Domain Controller will begin booting. Once it has fully started, open **Windows Defender Firewall with Advanced Security**, navigate to **Windows Defender Firewall Properties**, and set the **Firewall State** to **Off** for the Domain, Public, and Private profiles. Click **Apply** to save the changes.
+
+**Reason:**
+
+The firewall is temporarily disabled to allow connectivity testing between virtual machines, permitting `ICMP` ping traffic. DC-1 has been successfully deployed, connected to the correct Virtual Network and subnet, and is now ready for further Active Directory configuration and role installation.
+
+
+<img width="911" height="736" alt="Screenshot 2026-04-10 213841" src="https://github.com/user-attachments/assets/22168902-e12c-4377-a31f-c8973e2f4082" />
 
 > [!NOTE]
 > In a production environment, firewall rules would be properly configured rather than disabled.
 
+***CREATE CLIENT VM***
+
+In the Azure portal, navigate to Virtual Machine creation by typing "Virtual Machine" in the search bar. We select **+ Create** to create a Virtual Machine and configure the virtual machine by selecting your subscription and the "rg-active-directory-lab" resource group, naming the VM Client-1, selecting the Windows 10 Enterprise version 22H2 (x64 Gen2) image with x64 architecture, and using the Standard D2s_v3 (2 vCPUs, 8 GiB RAM) size.
+
+<img width="883" height="1299" alt="Screenshot 2026-04-10 214235" src="https://github.com/user-attachments/assets/51f34805-3fdc-40fc-b8ad-197999d63147" />
 
 
-`DC-1` has been successfully deployed in Azure within the configured Resource Group and Virtual Network. It is now running and properly connected to the designated subnet, making it ready for network configuration and further Active Directory setup.
-
-
-**3. Setup Client-1 VM in Azure**
----
-1. Deploy a **Windows 10** Virtual Machine named `Client-1`
-2. Ensure`Client 1` is in the same resource group as `DC-1`
-2. Configure the local administrator credentials: **Username/Password**
-3. Ensure `Client-1` is deployed in the same **region** and connected to the same **Virtual Network and subnet** as `DC-1`
+Ensure `Client-1` is deployed in the same **region** and connected to the same **Virtual Network and subnet** as `DC-1`
 
 **`Client-1` VM Configurations:**
 
