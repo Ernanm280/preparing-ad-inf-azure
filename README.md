@@ -22,8 +22,14 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 
 **1. Setup Domain Controller VM in Azure**
 ---
-1. Open the [Azure](https://portal.azure.com/) Portal
-2. Create a new **Resource Group** named `RG-Active_Directory`
+***CREATE RESOURCE GROUP.***
+
+I begin by logging into the [Azure](https://portal.azure.com/) Portal, typing "Resource Group" in the search bar, selecting it, and pressing "Create" to begin resource group creation. I named it "rg-active-directory-lab", and selected "Review + Create", last "Create" 
+
+<img width="1119" height="709" alt="Screenshot 2026-04-10 202145" src="https://github.com/user-attachments/assets/5785d2fe-6cd6-4c2a-bdec-b9283fe8d78b" />
+<img width="813" height="703" alt="Screenshot 2026-04-10 211121" src="https://github.com/user-attachments/assets/1cbbe209-dfdd-499a-bb5a-bcf041ad6306" />
+
+
 3. Create a **Virtual Network (VNet)** and add a subnet
 4. Deploy a **Windows Server 2022** Virtual Machine named `DC-1`
 5. Configure the administrator credentials: **Username/Password**
