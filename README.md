@@ -57,17 +57,20 @@ Navigated to the Networking tab. For Virtual Network, I selected the previously 
 
 <img width="848" height="1302" alt="Screenshot 2026-04-10 211624" src="https://github.com/user-attachments/assets/b2943ae0-13d7-4d14-ab5f-7b23da956bd0" />
 
+<img width="1319" height="388" alt="Screenshot 2026-04-10 212231" src="https://github.com/user-attachments/assets/ff30e45b-65d3-4e82-9f36-616d9e7a63d6" />
+
 <br>
 <br>
 <br>
 
 ***DOMAIN CONTROLLER VM CONFIGURATION***
 
-1. Navigate to `DC-1` in the Azure Portal
-2. Open the `Network Interface Card` (NIC) settings
-3. Under `IP configurations`, change the Private IP from **Dynamic** to **Static** and save
-
+Once the DC-1 VM is created, view the VM by typing "virtual Machine" in the search bar and navigating to > **Virtual Machines** > **DC-1**. On the left panel, located **Networking** > **Network Settings**, and select the VM's **Network Interface** under **Essentials** > On the left pane, in the drop-down "Settings" select "IP Configurations" > Select "ipconfig1" and set Private IP Allocation settings to Static. And now "Save". Go back to your listed VMs, and note/copy the Public IP of the Domain Controller. 
 The Domain Controllers' IP is configured as static to ensure consistent network communication. It must have a static IP so clients can reliably locate it for DNS and authentication services.
+
+<img width="1315" height="518" alt="Screenshot 2026-04-10 212317" src="https://github.com/user-attachments/assets/6b0e4c3a-204c-4e84-a3b6-e908058f7d74" />
+<img width="1048" height="819" alt="Screenshot 2026-04-10 212605" src="https://github.com/user-attachments/assets/2c2f1736-b96e-4c63-9e35-58c914329ab5" />
+
 
 **Disable Firewall (Temporary for Testing)**
 **Steps**:
