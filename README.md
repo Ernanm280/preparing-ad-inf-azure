@@ -75,7 +75,7 @@ The Domain Controllers' IP is configured as static to ensure consistent network 
 <br>
 <br>
 
-****Disable Firewall on DC-1 VM (Temporary for Testing)****
+***DISABLE FIREWALL ON DC-1 VM (Temporary for Testing)***
 
 On my local computer, I used Remote Desktop Client to connect to DC-1 VM using its public IP address (20.83.153.138). To connect, I enetred the correct credentials created when the VM was created.   
 
@@ -97,38 +97,42 @@ The firewall is temporarily disabled to allow connectivity testing between virtu
 > [!NOTE]
 > In a production environment, firewall rules would be properly configured rather than disabled.
 
+<br>
+<br>
+<br>
+
 ***CREATE CLIENT VM***
 
-In the Azure portal, navigate to Virtual Machine creation by typing "Virtual Machine" in the search bar. We select **+ Create** to create a Virtual Machine and configure the virtual machine by selecting your subscription and the "rg-active-directory-lab" resource group, naming the VM Client-1, selecting the Windows 10 Enterprise version 22H2 (x64 Gen2) image with x64 architecture, and using the Standard D2s_v3 (2 vCPUs, 8 GiB RAM) size.
+In the Azure portal, navigate to Virtual Machine creation by typing "Virtual Machine" in the search bar. We select **+ Create** to create a Virtual Machine and configure the virtual machine by selecting your subscription and the "rg-active-directory-lab" resource group, naming the VM "Client-1", choosing the (US) East US region with Availability Zone 3, selecting the Windows 10 Enterprise version 22H2 (x64 Gen2) image with x64 architecture, and using the Standard D2s_v3 (2 vCPUs, 8 GiB RAM) size. In the **Networking** tab for Virtual Network, select the previously created vnet (rg-active-directory-lab) and for the subnet, default. Once the Networking configuration is completed, select **Review + Create**, then click **Create** to deploy the virtual machine.
 
 <img width="883" height="1299" alt="Screenshot 2026-04-10 214235" src="https://github.com/user-attachments/assets/51f34805-3fdc-40fc-b8ad-197999d63147" />
 
+<br>
+<br>
+<br>
 
-Ensure `Client-1` is deployed in the same **region** and connected to the same **Virtual Network and subnet** as `DC-1`
+**CLIENT VM CONFIGURATION**
 
-**`Client-1` VM Configurations:**
+After deployment, return to your list of virtual machines, select **DC-1** VM, and open **Network Settings** from the left pane. Copy or note the **Private IP address** (10.0.0.4). 
 
-1. After deployment, navigate to `Client-1` **Network Interface (NIC)** settings in Azure
-2. Under **DNS settings**, change from **default** to **Custom** and enter `DC-1` Private IP address (`10.0.0.4`)
+<img width="1489" height="590" alt="Screenshot 2026-04-10 215151" src="https://github.com/user-attachments/assets/eb908055-194b-47b4-9faf-01a52125f2fe" />
 
-To locate `DC-1` Private IP address:
+<br>
+<br>
+<br>
 
-- Navigate to Virtual Machines in the Azure Portal
-- Select the DC-1 virtual machine
-- View the Overview page to identify networking details
-- Locate the assigned Private IP Address (10.0.0.4)
+Next, go back to the VM list and select **Client-1**. In the left pane, navigate to **Network > Network Settings**, then select the **Network Interface** under **Essentials**. From the left-side menu, open **DNS servers**, choose **Custom**, and paste the **DC-1 Private IP address** into the field. Finally, click **Save** at the top to apply the changes.
 
-<img width="757" height="160" alt="Screenshot 2026-03-02 185145" src="https://github.com/user-attachments/assets/d211fd43-480d-4e70-8488-c1edfb500633" />
+<img width="1483" height="664" alt="Screenshot 2026-04-10 215505" src="https://github.com/user-attachments/assets/9b1298b3-b45c-4f6f-b932-6e83bee43f2b" />
+<img width="837" height="633" alt="Screenshot 2026-04-10 215627" src="https://github.com/user-attachments/assets/e7b641fb-9423-4065-b646-05f315fe52b3" />
 
 <br>
 <br>
 
-4. Save the configuration changes
-5. Restart `Client-1` from the Azure Portal to apply the updated DNS settings
+Restart `Client-1` from the Azure Portal to apply the updated DNS settings. `Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. 
 
-`Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. 
-
-<img width="1224" height="288" alt="Screenshot 2026-03-02 185024" src="https://github.com/user-attachments/assets/840890bd-ab1b-416b-8cbd-f4d38021a024" />
+<img width="1378" height="563" alt="Screenshot 2026-04-10 215841" src="https://github.com/user-attachments/assets/d43307e5-ff2a-46b6-b26e-a91094ff8c1f" />
+<img width="1652" height="661" alt="Screenshot 2026-04-10 220240" src="https://github.com/user-attachments/assets/6a903a36-3272-406d-9030-4344e63b90f4" />
 
  
 **4. Validate Connectivity and Configuration**
