@@ -24,35 +24,50 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 ---
 ***CREATE RESOURCE GROUP.***
 
-I begin by logging into the [Azure](https://portal.azure.com/) Portal, typing "Resource Group" in the search bar, selecting it, and pressing "Create" to begin resource group creation. I named it "rg-active-directory-lab", and selected "Review + Create", last "Create" 
+Created a resource group to organize and manage all Azure resources for the Active Directory lab. I begin by logging in to the [Azure](https://portal.azure.com/) Portal, typing "Resource Group" in the search bar, selecting it, and pressing **Create** to create a resource group. I named it "rg-active-directory-lab", selected **Review + Create**, and then **Create**. 
 
 <img width="1119" height="709" alt="Screenshot 2026-04-10 202145" src="https://github.com/user-attachments/assets/5785d2fe-6cd6-4c2a-bdec-b9283fe8d78b" />
 <img width="813" height="703" alt="Screenshot 2026-04-10 211121" src="https://github.com/user-attachments/assets/1cbbe209-dfdd-499a-bb5a-bcf041ad6306" />
 
+<br>
+<br>
+<br>
 
-3. Create a **Virtual Network (VNet)** and add a subnet
-4. Deploy a **Windows Server 2022** Virtual Machine named `DC-1`
-5. Configure the administrator credentials: **Username/Password**
+***CREATE VIRTUAL NETWORK.***
 
-`DC-1` has been successfully deployed in Azure within the configured Resource Group and Virtual Network. It is now running and properly connected to the designated subnet, making it ready for network configuration and further Active Directory setup.
+In Azure, typed "Virtual Network" in the search bar, pressed **Virtual Network**, and selected **create**. During creation, I selected the previously created Resource Group "rg-active-directory-lab", and named the Virtual Network "vnet-active-directory-lab". A Virtual network enables secure communication between Azure VMs.
 
-> [!NOTE]
-> Ensure the VM is deployed in the selected region and connected to the created Virtual Network
-<img width="1174" height="226" alt="image" src="https://github.com/user-attachments/assets/4cd40abd-9120-443e-b930-57e18826b1e6" />
+<img width="816" height="703" alt="Screenshot 2026-04-10 211247" src="https://github.com/user-attachments/assets/f7842141-c51d-4625-a391-655d854b45b6" />
 
+<br>
+<br>
+<br>
 
-**2. Domain Controller VM configuration**
----
+***CREATE DOMAIN CONTROLLER VM***
+
+In Azure, typed "Virtual Machine" in the search bar and selected **+ Create** to start VM creation. Configured the virtual machine by selecting the resource group "rg-active-directory-lab", naming the VM "DC-1", selecting **Windows Server 2022** for **Image**, and assigning an appropriate VM size. Configured the administrator credentials, **username**, and **password** in the Admin Account section.
+
+<img width="814" height="1289" alt="Screenshot 2026-04-10 211602" src="https://github.com/user-attachments/assets/ec288a74-6741-4888-99ab-7d4f5473604e" />
+
+<br>
+<br>
+<br>
+
+Navigated to the Networking tab. For Virtual Network, I selected the previously created vnet "rg-active-directory-lab", assigned a public IP address, and selected 'default' for Subnet. Once the networking settings are configured, select "Review + Create," then "Create". 
+
+<img width="848" height="1302" alt="Screenshot 2026-04-10 211624" src="https://github.com/user-attachments/assets/b2943ae0-13d7-4d14-ab5f-7b23da956bd0" />
+
+<br>
+<br>
+<br>
+
+***DOMAIN CONTROLLER VM CONFIGURATION***
+
 1. Navigate to `DC-1` in the Azure Portal
 2. Open the `Network Interface Card` (NIC) settings
 3. Under `IP configurations`, change the Private IP from **Dynamic** to **Static** and save
 
 The Domain Controllers' IP is configured as static to ensure consistent network communication. It must have a static IP so clients can reliably locate it for DNS and authentication services.
-
- <img width="572" height="621" alt="Screenshot 2026-03-02 183115" src="https://github.com/user-attachments/assets/2344b303-daae-423e-b7be-3ea99c58717b" />
-
-<br>
-<br>
 
 **Disable Firewall (Temporary for Testing)**
 **Steps**:
@@ -66,7 +81,8 @@ Firewall is temporarily disabled to allow connectivity testing between virtual m
 > In a production environment, firewall rules would be properly configured rather than disabled.
 
 
-<img width="762" height="669" alt="Screenshot 2026-03-02 183943" src="https://github.com/user-attachments/assets/e7a15d53-6d87-4875-8fcc-96ad3d78415c" />
+
+`DC-1` has been successfully deployed in Azure within the configured Resource Group and Virtual Network. It is now running and properly connected to the designated subnet, making it ready for network configuration and further Active Directory setup.
 
 
 **3. Setup Client-1 VM in Azure**
