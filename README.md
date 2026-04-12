@@ -65,7 +65,8 @@ Navigated to the Networking tab. For Virtual Network, I selected the previously 
 
 ***DOMAIN CONTROLLER VM CONFIGURATION***
 
-Once the DC-1 VM is created, view the VM by typing "virtual Machine" in the search bar and navigating to > **Virtual Machines** > **DC-1**. On the left panel, located **Networking** > **Network Settings**, and select the VM's **Network Interface** under **Essentials** > On the left pane, in the drop-down "Settings" select "IP Configurations" > Select "ipconfig1" and set Private IP Allocation settings to Static. And now "Save". Go back to your listed VMs, and note/copy the Public IP of the Domain Controller. 
+Once the DC-1 VM is created, view the VM by typing "virtual Machine" in the search bar and navigating to > **Virtual Machines** > **DC-1**. On the left panel, located **Networking** > **Network Settings**, and select the VM's **Network Interface** under **Essentials**. On the left pane, in the drop-down select **Settings** > **IP Configurations** > **ipconfig1**, and set Private IP
+Allocation settings to **Static**. Once I selected **Save**, I went back to the listed DC-1 VM and noted and copied the Domain Controller's Public IP. 
 The Domain Controllers' IP is configured as static to ensure consistent network communication. It must have a static IP so clients can reliably locate it for DNS and authentication services.
 
 <img width="1315" height="518" alt="Screenshot 2026-04-10 212317" src="https://github.com/user-attachments/assets/6b0e4c3a-204c-4e84-a3b6-e908058f7d74" />
