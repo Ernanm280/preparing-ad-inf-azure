@@ -91,16 +91,13 @@ Next, select **Yes** to proceed—your Domain Controller will begin booting. Onc
 
 The firewall is temporarily disabled to allow connectivity testing between virtual machines, permitting `ICMP` ping traffic. DC-1 has been successfully deployed, connected to the correct Virtual Network and subnet, and is now ready for further Active Directory configuration and role installation.
 
-
-<img width="911" height="736" alt="Screenshot 2026-04-10 213841" src="https://github.com/user-attachments/assets/22168902-e12c-4377-a31f-c8973e2f4082" />
-
 > [!NOTE]
 > In a production environment, firewall rules would be properly configured rather than disabled.
 
-<br>
-<br>
-<br>
+<img width="911" height="736" alt="Screenshot 2026-04-10 213841" src="https://github.com/user-attachments/assets/22168902-e12c-4377-a31f-c8973e2f4082" />
 
+**2. Setup Client VM in Azure**
+---
 ***CREATE CLIENT VM***
 
 In the Azure portal, navigate to Virtual Machine creation by typing "Virtual Machine" in the search bar. We select **+ Create** to create a Virtual Machine and configure the virtual machine by selecting your subscription and the "rg-active-directory-lab" resource group, naming the VM "Client-1", choosing the (US) East US region with Availability Zone 3, selecting the Windows 10 Enterprise version 22H2 (x64 Gen2) image with x64 architecture, and using the Standard D2s_v3 (2 vCPUs, 8 GiB RAM) size. In the **Networking** tab for Virtual Network, select the previously created vnet (rg-active-directory-lab) and for the subnet, default. Once the Networking configuration is completed, select **Review + Create**, then click **Create** to deploy the virtual machine.
@@ -132,48 +129,21 @@ Next, go back to the VM list and select **Client-1**. In the left pane, navigate
 Restart `Client-1` from the Azure Portal to apply the updated DNS settings. `Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. 
 
 <img width="1378" height="563" alt="Screenshot 2026-04-10 215841" src="https://github.com/user-attachments/assets/d43307e5-ff2a-46b6-b26e-a91094ff8c1f" />
-<img width="1652" height="661" alt="Screenshot 2026-04-10 220240" src="https://github.com/user-attachments/assets/6a903a36-3272-406d-9030-4344e63b90f4" />
 
- 
-**4. Validate Connectivity and Configuration**
----
+<br>
+<br>
+<br>
 
-**Test connectivity to `DC-1`**
+***Validate Connectivity and Configuration***
 
-**Steps**:
-
-1. Log into `Client-1`
-2. Open Command Prompt
-3. Ping `DC-1` private IP `(10.0.0.4)`
+To validate connectivity to **DC-1**, I used **Remote Desktop** on my local computer to connect to the **Client-1** VM via its public IP address (52.186.171.6) using the credentials created during deployment. After successfully logging in, I opened **PowerShell** and ran a `ping` to the Domain Controller’s private IP address (**10.0.0.4**) to confirm network connectivity. Finally, I executed `ipconfig /all` to verify that the **DNS server** is set to the private IP address of **DC-1**.
 
 **Successful replies confirm:**
   * Network connectivity is functioning properly
   * The firewall is not blocking ICMP traffic
-  * Both VMs are on the same Virtual Network and subnet
+  * Both **DC-1** and **Client-1** VMs are on the same Virtual Network and subnet
 
-> [!NOTE]
->  If ping fails, verify that both VMs are in the same VNet and that firewall or NSG rules are not blocking ICMP traffic.
-
-<img width="567" height="396" alt="Screenshot 2026-03-02 185645" src="https://github.com/user-attachments/assets/254be868-949c-493b-9a3e-6c74a2e0c960" />
-
-<br>
-<br>
-
-**Verify DNS settings on `Client-1`**
-- Open PowerShell and run: `ipconfig /all`
-
-> [!NOTE]
-> Active Directory relies on DNS to locate domain services, making this step essential for domain communications.
-
-<img width="614" height="439" alt="Screenshot 2026-03-02 185813" src="https://github.com/user-attachments/assets/65b8ca9c-40c9-4e07-9678-76fbdaa204af" />
-
-
-## Verification Results
-
-- `Client-1` can reach `DC-1`
-- DNS is correctly pointing to `DC-1`
-- Network configuration is properly set
-- The environment is ready for domain join
+<img width="695" height="853" alt="Screenshot 2026-04-10 221728" src="https://github.com/user-attachments/assets/80448694-4f6f-4c00-b9de-baaecd15edce" />
 
 <h2>Purpose</h2>
 
