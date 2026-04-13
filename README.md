@@ -18,7 +18,7 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 - Windows Server 2022
 - Windows 10 (21H2)
 
-<h2>Architecture Overview<h2>
+<h2>Architecture Overview </h2>
 
 - DC-1 = Domain Controller (DNS + AD DS)
 - Client-1 = Domain-joined machine
