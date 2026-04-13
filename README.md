@@ -115,7 +115,7 @@ In the Azure portal, I initiated virtual machine creation by searching for “Vi
 <br>
 <br>
 
-**CLIENT VM CONFIGURATION**
+***CLIENT VM CONFIGURATION***
 
 After deployment, return to your list of virtual machines, select **DC-1** VM, and open **Network Settings** from the left pane. Copy or note the **Private IP address** (10.0.0.4). 
 
