@@ -18,6 +18,12 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 - Windows Server 2022
 - Windows 10 (21H2)
 
+<h2>Architecture Overview<h2>
+
+- DC-1 = Domain Controller (DNS + AD DS)
+- Client-1 = Domain-joined machine
+- Both connected via VNet (same subnet)
+
 <h2>Deployment and Configuration Steps</h2>
 
 **1. Setup Domain Controller VM in Azure**
@@ -53,7 +59,7 @@ In the Azure portal, I initiated virtual machine creation by searching for “Vi
 <br>
 <br>
 
-Navigated to the **Networking** tab for Virtual Network, and selected the previously created vnet "rg-active-directory-lab", assigned a public IP address, and selected 'default' for Subnet. Once the networking settings are configured, select "Review + Create," then "Create". 
+Navigated to the **Networking** tab for Virtual Network, and selected the previously created vnet "vnet-active-directory-lab", assigned a public IP address, and selected 'default' for Subnet. Once the networking settings are configured, select "Review + Create," then "Create". 
 
 <img width="848" height="1302" alt="Screenshot 2026-04-10 211624" src="https://github.com/user-attachments/assets/b2943ae0-13d7-4d14-ab5f-7b23da956bd0" />
 
@@ -77,7 +83,7 @@ The Domain Controllers' IP is configured as static to ensure consistent network 
 
 ***DISABLE FIREWALL ON DC-1 VM (Temporary for Testing)***
 
-On my local computer, I used Remote Desktop Client to connect to DC-1 VM using its public IP address (20.83.153.138). To connect, I enetred the correct credentials created when the VM was created.   
+On my local computer, I used Remote Desktop Client to connect to DC-1 VM using its public IP address (20.83.153.138). To connect, I entered the correct credentials created when the VM was created.   
 
 <img width="1381" height="613" alt="Screenshot 2026-04-10 213001" src="https://github.com/user-attachments/assets/25ad1938-1ef6-4450-ab8c-85e5e596b9bc" />
 
