@@ -152,6 +152,50 @@ To validate connectivity to **DC-1**, I used **Remote Desktop** on my local comp
 
 <img width="695" height="853" alt="Screenshot 2026-04-10 221728" src="https://github.com/user-attachments/assets/80448694-4f6f-4c00-b9de-baaecd15edce" />
 
+**3. Install Active Directory**
+---
+
+To install Active Directory on the domain controller, I returned to the **DC-1** VM and navigated to the **Server Manager** dashboard. Proceed by selecting option 2, **Add roles and features**, then select **Next** until you reach **Server Roles**. In Server roles, select **Active Directory Domain Services (AD DS)** under **Server Roles**. Upon selection, I was prompted to add the required features, including Group Policy Management and Remote Server Administration Tools. I clicked **Add Features** and ensured that management tools were included to enable full administrative functionality.  
+
+<img width="1033" height="721" alt="Screenshot 2026-04-10 222007" src="https://github.com/user-attachments/assets/4d10a429-6b13-4de8-a3b5-8e9cb86cb327" />
+
+<br>
+<br>
+
+I proceeded through the Features and AD DS informational pages by selecting **Next**. On the Confirmation screen, I enabled “Restart the destination server automatically if required” to ensure a smooth installation process, then clicked **Install** to begin deploying Active Directory Domain Services.
+
+<img width="1128" height="614" alt="Screenshot 2026-04-10 222133" src="https://github.com/user-attachments/assets/d34df9cf-4a64-4e69-ab47-e1825b758c40" />
+
+<br>
+<br>
+
+After the installation was completed, a notification appeared in Server Manager indicating that additional configuration was required. I selected **“Promote this server to a domain controller”** to begin setting up Active Directory and converting the server into a Domain Controller.
+
+<img width="1344" height="772" alt="Screenshot 2026-04-10 222525" src="https://github.com/user-attachments/assets/08a4a1e5-18ab-40ee-a1fc-75a7c1f0e9db" />
+
+<br>
+<br>
+
+From Server Manager, select **“Promote this server to a domain controller.”** In the Deployment Configuration screen, choose **“Add a new forest”** and enter **“mydomain.com”** as the root domain name (the forest name can be customized as needed). Click **Next**, then in the Domain Controller Options, create and confirm the **DSRM password**. Proceed by clicking **Next**, and ensure the **DNS Delegation** option is unchecked. Continue selecting **Next** through the remaining steps, then click **Install**. The virtual machine will complete the forest installation and automatically restart/sign out.
+
+<img width="976" height="831" alt="Screenshot 2026-04-10 222650" src="https://github.com/user-attachments/assets/d525d850-239e-4c30-819f-1ed6e60d2473" />
+<img width="757" height="550" alt="Screenshot 2026-04-10 222922" src="https://github.com/user-attachments/assets/a5f7619f-c852-4bfd-ae6d-a7bb8aaae936" />
+
+<br>
+<br>
+
+The **DC-1** VM will restart. Before remotely logging back in, in **Remote Desktop Client**, select **More options**. Under the username field, I specified the domain user in the format mydomain.com\<yourcreatedcredentials>, then selected **Connect**. I was prompted to enter the credentials, allowing me to log into the domain-joined machine successfully.
+
+<img width="401" height="475" alt="Screenshot 2026-04-10 223859" src="https://github.com/user-attachments/assets/dabceacb-1e48-47ca-9f5f-378900dd0ab5" />
+
+<br>
+<br>
+
+After logging back into the Domain Controller, I reviewed the Server Manager Dashboard to confirm that both Active Directory Domain Services (AD DS) and DNS roles were successfully installed and are running properly.
+
+<img width="1533" height="796" alt="Screenshot 2026-04-10 224314" src="https://github.com/user-attachments/assets/8f5f2ab4-a96f-4d38-bbc7-fdedcd148788" />
+
+
 <h2>Purpose</h2>
 
 The purpose of this repository is to document and demonstrate the process of preparing an Active Directory infrastructure within Microsoft Azure. It provides a structured reference for building a cloud-based environment that simulates a traditional on-premises Active Directory setup.
