@@ -143,7 +143,6 @@ Next, I returned to the Virtual Machines list and selected **Client-1**. From th
 
 <br>
 <br>
-<br>
 
 In the network interface settings, I opened **DNS servers**, switched the option to **Custom**, and entered the **DC-1 private IP address**. Finally, I clicked **Save** to apply the configuration.
 
@@ -162,7 +161,7 @@ To apply the updated DNS settings, I restarted Client-1 directly from the Azure 
 
 ***Validate Connectivity and Configuration***
 
-To validate connectivity to **DC-1**, I used **Remote Desktop** on my local computer to connect to the **Client-1** VM via its public IP address (52.186.171.6) using the credentials created during deployment. After successfully logging in, I opened **PowerShell** and ran a `ping` to the Domain Controller’s private IP address (**10.0.0.4**) to confirm network connectivity. Finally, I executed `ipconfig /all` to verify that the **DNS server** is set to the private IP address of **DC-1**.
+To validate connectivity to **DC-1**, I used **Remote Desktop** on my local computer to connect to the **Client-1** VM using its public IP address (52.186.171.6) using the credentials created during deployment. After successfully logging in, I opened **PowerShell** and ran `ping` to the Domain Controller’s private IP address (**10.0.0.4**) to confirm network connectivity. Finally, I executed `ipconfig /all` to verify that the **DNS server** is set to the private IP address of **DC-1**.
 
 **Successful replies confirm:**
   * Network connectivity is functioning properly
@@ -203,7 +202,7 @@ From Server Manager, select **“Promote this server to a domain controller.”*
 <br>
 <br>
 
-The **DC-1** VM will restart. Before remotely logging back in, in **Remote Desktop Client**, select **More options**. Under the username field, I specified the domain user in the format mydomain.com\<yourcreatedcredentials>, then selected **Connect**. I was prompted to enter the credentials, allowing me to log into the domain-joined machine successfully.
+The **DC-1** VM will restart. Before remotely logging back in, in **Remote Desktop Client**, select **More options**. Under the username field, I specified the domain user in the format `mydomain.com\<yourcreatedcredentials>`, then selected **Connect**. I was prompted to enter the credentials, allowing me to log into the domain-joined machine successfully.
 
 <img width="401" height="475" alt="Screenshot 2026-04-10 223859" src="https://github.com/user-attachments/assets/dabceacb-1e48-47ca-9f5f-378900dd0ab5" />
 
