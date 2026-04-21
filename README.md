@@ -32,7 +32,8 @@ This repository demonstrates the deployment of an on-premises-style Active Direc
 ---
 ***CREATE RESOURCE GROUP.***
 
-Created a resource group to organize and manage all Azure resources for the Active Directory lab. I begin by logging in to the [Azure](https://portal.azure.com/) Portal, typing "Resource Group" in the search bar, selecting it, and pressing **Create** to create a resource group. I named it "rg-active-directory-lab", selected **Review + Create**, and then **Create**. 
+Created a resource group to centrally organize and manage all Azure resources for the Active Directory lab. I began by signing in to the [Azure](https://portal.azure.com/) portal, searching for “Resource Groups,” and selecting the service. From there, I initiated the creation process, assigned the name “rg-active-directory-lab,” and completed the setup by selecting “Review + Create,” followed by “Create.”
+
 
 <img width="1119" height="709" alt="Screenshot 2026-04-10 202145" src="https://github.com/user-attachments/assets/5785d2fe-6cd6-4c2a-bdec-b9283fe8d78b" />
 <img width="813" height="703" alt="Screenshot 2026-04-10 211121" src="https://github.com/user-attachments/assets/1cbbe209-dfdd-499a-bb5a-bcf041ad6306" />
@@ -43,7 +44,7 @@ Created a resource group to organize and manage all Azure resources for the Acti
 
 ***CREATE VIRTUAL NETWORK.***
 
-In Azure, typed "Virtual Network" in the search bar, pressed **Virtual Network**, and selected **create**. During creation, I selected the previously created Resource Group "rg-active-directory-lab", and named the Virtual Network "vnet-active-directory-lab". A Virtual network enables secure communication between Azure VMs.
+In the Azure Portal, I searched for “Virtual Networks,” selected the service, and clicked “+ Create.” During the setup process, I chose the previously created resource group “rg-active-directory-lab” and assigned the name “vnet-active-directory-lab” to the virtual network. This virtual network provides a secure environment that allows Azure virtual machines to communicate with one another.
 
 <img width="816" height="703" alt="Screenshot 2026-04-10 211247" src="https://github.com/user-attachments/assets/f7842141-c51d-4625-a391-655d854b45b6" />
 
