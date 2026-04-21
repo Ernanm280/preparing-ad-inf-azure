@@ -54,7 +54,7 @@ In the Azure Portal, I searched for “Virtual Networks,” selected the service
 
 ***CREATE DOMAIN CONTROLLER VM***
 
-In the Azure portal, I initiated virtual machine creation by searching for “Virtual Machine” in the search bar and selecting **+ Create**. I chose the **rg-active-directory-lab** resource group, named the VM **DC-1**, and configured the username and password under the Admin Account section. I set the region to **(US) East US** with **Availability Zone 3**, selected the **Windows Server 2022 Datacenter: Azure Edition (x64 Gen2)** image, and used the **Standard D2s_v3 (2 vCPUs, 8 GiB RAM)** size.
+In the Azure portal, I initiated virtual machine creation by searching for “Virtual Machine” in the search bar and selecting "+ Create". I chose the **rg-active-directory-lab** resource group, named the VM "DC-1", and configured the username and password under the Admin Account section. I set the region to **(US) East US** with **Availability Zone 3**, selected the **Windows Server 2022 Datacenter: Azure Edition (x64 Gen2)** image, and used the **Standard D2s_v3 (2 vCPUs, 8 GiB RAM)** size.
 
 <img width="814" height="1289" alt="Screenshot 2026-04-10 211602" src="https://github.com/user-attachments/assets/ec288a74-6741-4888-99ab-7d4f5473604e" />
 
@@ -62,11 +62,10 @@ In the Azure portal, I initiated virtual machine creation by searching for “Vi
 <br>
 <br>
 
-Navigated to the **Networking** tab for Virtual Network, and selected the previously created vnet "vnet-active-directory-lab", assigned a public IP address, and selected 'default' for Subnet. Once the networking settings are configured, select "Review + Create," then "Create". 
+During Virtual machine creation, I navigated to the **Networking** tab for the virtual network. I selected the previously created VNet "vnet-active-directory-lab", assigned a public IP address, and selected 'default' for Subnet. Once the networking settings were configured, select "Review + Create," then "Create". 
 
 <img width="848" height="1302" alt="Screenshot 2026-04-10 211624" src="https://github.com/user-attachments/assets/b2943ae0-13d7-4d14-ab5f-7b23da956bd0" />
 
-<img width="1319" height="388" alt="Screenshot 2026-04-10 212231" src="https://github.com/user-attachments/assets/ff30e45b-65d3-4e82-9f36-616d9e7a63d6" />
 
 <br>
 <br>
@@ -74,9 +73,17 @@ Navigated to the **Networking** tab for Virtual Network, and selected the previo
 
 ***DOMAIN CONTROLLER VM CONFIGURATION***
 
-Once the DC-1 VM is created, view the VM by typing "virtual Machine" in the search bar and navigating to > **Virtual Machines** > **DC-1**. On the left panel, located **Networking** > **Network Settings**, and select the VM's **Network Interface** under **Essentials**. On the left pane, in the drop-down select **Settings** > **IP Configurations** > **ipconfig1**, and set Private IP
-Allocation settings to **Static**. Once I selected **Save**, I went back to the listed DC-1 VM and noted and copied the Domain Controller's Public IP. 
-The Domain Controllers' IP is configured as static to ensure consistent network communication. It must have a static IP so clients can reliably locate it for DNS and authentication services.
+After creating the DC-1 virtual machine, I accessed it by searching “Virtual Machines” in the Azure Portal and navigating to **Virtual Machines > DC-1**. From the left-hand menu, I selected **Networking > Network Settings**, then clicked on the VM’s **Network Interface** listed under **Essentials**.
+
+<img width="1319" height="388" alt="Screenshot 2026-04-10 212231" src="https://github.com/user-attachments/assets/ff30e45b-65d3-4e82-9f36-616d9e7a63d6" />
+
+<br>
+<br>
+<br>
+
+Within the network interface settings, I navigated to **Settings > IP Configurations > ipconfig1**, where I changed the Private IP allocation from dynamic to **Static**, and saved the configuration. Afterward, I returned to the DC-1 VM overview page to locate and copy the Domain Controller’s public IP address.
+
+Configuring the Domain Controller with a static private IP ensures consistent and reliable network communication. This is critical because client machines depend on the Domain Controller for DNS resolution and authentication services, which require a fixed IP address to function properly.
 
 <img width="1048" height="819" alt="Screenshot 2026-04-10 212605" src="https://github.com/user-attachments/assets/2c2f1736-b96e-4c63-9e35-58c914329ab5" />
 
@@ -86,7 +93,7 @@ The Domain Controllers' IP is configured as static to ensure consistent network 
 
 ***DISABLE FIREWALL ON DC-1 VM (Temporary for Testing)***
 
-On my local computer, I used Remote Desktop Client to connect to DC-1 VM using its public IP address (20.83.153.138). To connect, I entered the correct credentials created when the VM was created.   
+On my local computer, I used Remote Desktop to connect to DC-1 VM using its public IP address (20.83.153.138). To connect, I entered the correct credentials created when the VM was created.   
 
 <img width="1381" height="613" alt="Screenshot 2026-04-10 213001" src="https://github.com/user-attachments/assets/25ad1938-1ef6-4450-ab8c-85e5e596b9bc" />
 
@@ -94,7 +101,7 @@ On my local computer, I used Remote Desktop Client to connect to DC-1 VM using i
 <br>
 <br>
 
-Next, select **Yes** to proceed—your Domain Controller will begin booting. Once it has fully started, open **Windows Defender Firewall with Advanced Security**, navigate to **Windows Defender Firewall Properties**, and set the **Firewall State** to **Off** for the Domain, Public, and Private profiles. Click **Apply** to save the changes.
+Next, I selected **Yes** to proceed, which initiated the Domain Controller’s boot process. Once the system was fully up and running, I opened **Windows Defender Firewall with Advanced Security** and accessed **Windows Defender Firewall Properties**. From there, I disabled the firewall by setting the Firewall State to **Off** for the Domain, Public, and Private profiles, then clicked **Apply** to save the changes.
 
 **Reason:**
 
@@ -109,8 +116,9 @@ The firewall is temporarily disabled to allow connectivity testing between virtu
 ---
 ***CREATE CLIENT VM***
 
-In the Azure portal, I initiated virtual machine creation by searching for “Virtual Machine” in the search bar and selecting **+ Create**. I chose the **rg-active-directory-lab** resource group, named the VM **Client-1**, and configured the administrator username and password under the Admin Account section. I set the region to **(US) East US** with **Availability Zone 3**, selected the **Windows 10 Enterprise 22H2 (x64 Gen2)** image with x64 architecture, and used the **Standard D2s_v3 (2 vCPUs, 8 GiB RAM)** size. In the **Networking** tab, I selected the previously created virtual network (**rg-active-directory-lab**) and kept the subnet as default. After completing the configuration, I clicked **Review + Create**, then selected **Create** to deploy the virtual machine.
+In the Azure portal, I initiated virtual machine creation by searching for “Virtual Machine” in the search bar and selecting **+ Create**. I chose the **rg-active-directory-lab** resource group, named the VM **Client-1**, and configured the administrator username and password under the Admin Account section. I set the region to **(US) East US** with **Availability Zone 3**, selected the **Windows 10 Enterprise 22H2 (x64 Gen2)** image with x64 architecture, and used the **Standard D2s_v3 (2 vCPUs, 8 GiB RAM)** size. 
 
+In the **Networking** tab, I selected the previously created virtual network (**rg-active-directory-lab**) and kept the subnet as default. After completing the configuration, I clicked **Review + Create**, then selected **Create** to deploy the virtual machine.
 
 <img width="883" height="1299" alt="Screenshot 2026-04-10 214235" src="https://github.com/user-attachments/assets/51f34805-3fdc-40fc-b8ad-197999d63147" />
 
@@ -120,7 +128,8 @@ In the Azure portal, I initiated virtual machine creation by searching for “Vi
 
 ***CLIENT VM CONFIGURATION***
 
-After deployment, return to your list of virtual machines, select **DC-1** VM, and open **Network Settings** from the left pane. Copy or note the **Private IP address** (10.0.0.4). 
+After deployment, I navigated to the **Virtual Machines** list, selected the **DC-1** VM, and opened **Network Settings** from the left-hand pane. From there, I located and recorded the private IP address (10.0.0.4) for later use.
+
 
 <img width="1489" height="590" alt="Screenshot 2026-04-10 215151" src="https://github.com/user-attachments/assets/eb908055-194b-47b4-9faf-01a52125f2fe" />
 
@@ -128,15 +137,22 @@ After deployment, return to your list of virtual machines, select **DC-1** VM, a
 <br>
 <br>
 
-Next, go back to the VM list and select **Client-1**. In the left pane, navigate to **Network > Network Settings**, then select the **Network Interface** under **Essentials**. From the left-side menu, open **DNS servers**, choose **Custom**, and paste the **DC-1 Private IP address** into the field. Finally, click **Save** at the top to apply the changes.
+Next, I returned to the Virtual Machines list and selected **Client-1**. From the left-hand pane, I navigated to **Network > Network Settings**, then selected the **Network Interface** under **Essentials**.
 
 <img width="1483" height="664" alt="Screenshot 2026-04-10 215505" src="https://github.com/user-attachments/assets/9b1298b3-b45c-4f6f-b932-6e83bee43f2b" />
+
+<br>
+<br>
+<br>
+
+In the network interface settings, I opened **DNS servers**, switched the option to **Custom**, and entered the **DC-1 private IP address**. Finally, I clicked **Save** to apply the configuration.
+
 <img width="837" height="633" alt="Screenshot 2026-04-10 215627" src="https://github.com/user-attachments/assets/e7b641fb-9423-4065-b646-05f315fe52b3" />
 
 <br>
 <br>
 
-Restart `Client-1` from the Azure Portal to apply the updated DNS settings. `Client-1` is now properly configured to use `DC-1` for DNS resolution and is ready for domain connectivity. 
+To apply the updated DNS settings, I restarted Client-1 directly from the Azure Portal. After the reboot, the machine was successfully configured to use DC-1 for DNS resolution and was ready for domain connectivity.
 
 <img width="1378" height="563" alt="Screenshot 2026-04-10 215841" src="https://github.com/user-attachments/assets/d43307e5-ff2a-46b6-b26e-a91094ff8c1f" />
 
