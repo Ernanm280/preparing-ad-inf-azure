@@ -93,7 +93,7 @@ Configuring the Domain Controller with a static private IP ensures consistent an
 
 ***DISABLE FIREWALL ON DC-1 VM (Temporary for Testing)***
 
-On my local computer, I used Remote Desktop to connect to DC-1 VM using its public IP address (20.83.153.138). To connect, I entered the correct credentials created when the VM was created.   
+On my local computer, I used Remote Desktop to connect to DC-1 VM using its public IP address (20.83.153.138) and entered the correct credentials. 
 
 <img width="1381" height="613" alt="Screenshot 2026-04-10 213001" src="https://github.com/user-attachments/assets/25ad1938-1ef6-4450-ab8c-85e5e596b9bc" />
 
